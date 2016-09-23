@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Matteo Guglielmetti <matteo.guglielmetti@hotmail.it>
+MAINTAINER Ulisses Castro <uss.thebug@gmail.com>
 
 RUN apt-get update && \
 apt-get install --no-install-recommends -y \
@@ -9,11 +9,12 @@ wget && \
 apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /opt
-RUN wget -nv https://github.com/gophish/gophish/releases/download/v0.1.2/gophish_linux_64bit.zip && \
-unzip gophish_linux_64bit.zip && \
-rm -f gophish_linux_64bit.zip
+RUN wget -nv https://github.com/gophish/gophish/archive/master.zip && \
+unzip master.zip && \
+rm -f master.zip && \
+mv gophish-master gophish
 
-WORKDIR /opt/gophish_linux_64bit
+WORKDIR /opt/gophish
 RUN sed -i "s|127.0.0.1|0.0.0.0|g" config.json && \
 chmod +x gophish
 
