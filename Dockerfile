@@ -16,7 +16,6 @@ echo 'export PATH=$PATH:/opt/go/bin' >> /root/.profile && \
 echo 'export GOPATH=/opt' >> /root/.profile && \
 export PATH=$PATH:/opt/go/bin && \
 export GOPATH=/opt && \
-source /root/.profile && \
 go get github.com/gophish/gophish
 
 WORKDIR /usr/src/src/github.com/gophish/gophish
