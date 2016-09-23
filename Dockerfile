@@ -13,7 +13,9 @@ WORKDIR /usr/src
 RUN wget -nv https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz && \
 tar -xvf go1.6.linux-amd64.tar.gz && \
 echo 'export PATH=$PATH:/opt/go/bin' >> /root/.profile && \
-echo 'export GOPATH=/root/tmp' >> /root/.profile && \
+echo 'export GOPATH=/opt' >> /root/.profile && \
+export PATH=$PATH:/opt/go/bin && \
+export GOPATH=/opt && \
 source /root/.profile && \
 go get github.com/gophish/gophish
 
@@ -24,4 +26,3 @@ chmod +x gophish
 
 EXPOSE 3333 80
 ENTRYPOINT ["./gophish"]
-
